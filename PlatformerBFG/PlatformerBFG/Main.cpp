@@ -53,25 +53,18 @@ void updateScene(Scene& scene) {
 	if (circle->getPosition().x < 0) {
 		circle->move(Vector2f(-circle->getPosition().x, 0));
 		moveDir.x *= -1;
-		moveDir *= 1.1f;
 	}
 	if(circle->getPosition().x + circle->getRadius() * 2 > SCREEN_WIDTH) {
 		circle->move(Vector2f(SCREEN_WIDTH - circle->getPosition().x - circle->getRadius() * 2, 0));
 		moveDir.x *= -1;
-		moveDir *= 1.1f;
 	}
 	if (circle->getPosition().y < 0) {
 		circle->move(Vector2f(0, -circle->getPosition().y));
 		moveDir.y *= -1;
-		moveDir *= 1.1f;
 	}
 	if(circle->getPosition().y + circle->getRadius() * 2 > SCREEN_HEIGHT) {
 		float delta = (circle->getPosition().y + circle->getRadius() * 2) - SCREEN_HEIGHT;
 		circle->move(Vector2f(0, SCREEN_HEIGHT - circle->getPosition().y - circle->getRadius() * 2));
 		moveDir.y *= -1;
-		moveDir *= 1.1f;
 	}
-
-	moveDir.x = min(moveDir.x, 4.f);
-	moveDir.y = min(moveDir.y, 4.f);
 }
