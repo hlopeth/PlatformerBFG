@@ -1,30 +1,35 @@
 #pragma once
-#include <SFML/Graphics.hpp>
 #include <vector>
+#include "Actor.h"
 
 using std::vector;
 using namespace sf;
 
 class Scene {
 public:
-	vector<Shape*> items;
-
-
-	void add(Shape* item) {
-		items.push_back(item);
+	vector<Actor*> actors;
+	
+	void add(Actor* item) {
+		actors.push_back(item);
 	}
 
 	void draw(RenderWindow &window) {
 		window.clear();
-		for (auto item : items) {
-			window.draw(*item);
+		for (auto actor : actors) {
+			actor->draw(window);
 		}
 		window.display();
 	}
 
+	void update() {
+		for (auto actor : actors) {
+			actor->update();
+		}
+	}
+
 	void clear() {
-		for (auto item : items)
+		for (auto item : actors)
 			delete(item);
-		items.clear();
+		actors.clear();
 	}
 };
