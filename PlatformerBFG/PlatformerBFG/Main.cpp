@@ -2,12 +2,11 @@
 #include <iostream>
 #include "Scene.h"
 #include "Actor.h"
+#include "InputProvider.h"
+#include "Player.h"
 
 using namespace std;
 using namespace sf;
-
-//precicates
-void poolEvents(RenderWindow& window);
 
 //constants
 const int SCREEN_WIDTH = 800;
@@ -18,9 +17,9 @@ class Circle : public Actor, public CircleShape {
 public:
 	Circle(int r) : CircleShape(r) {
 	}
-	void update() override {
-		move(moveDir);
-
+	void update(float time, float deltaTime) override {
+		move(moveDir * speed * deltaTime);
+		
 		if (getPosition().x < 0) {
 			move(Vector2f(-getPosition().x, 0));
 			moveDir.x *= -1;
@@ -40,41 +39,35 @@ public:
 		}
 	}
 	
-	virtual void draw(RenderWindow& window) const {
+	virtual void draw(RenderWindow& window) {
 		window.draw(*this);
 	}
 private:
-	Vector2f moveDir = Vector2f(0.1f, 0.1f);
+	Vector2f moveDir = Vector2f(1, 1);
+	float speed = 1;
 };
 
 int main()
 {
 	RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "SFML works!");
 	Scene scene;
-	CircleShape;
-	Circle *shape = new Circle(10.f);
+	InputProvider inputProvider;
+
+	Circle *shape = new Circle(10);
 	shape->setFillColor(Color::Green);
 	shape->setPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 	scene.add(shape);
 
+	Player player;
+	scene.add(&player);
+	inputProvider.registerListner(&player);
 
 	while (window.isOpen())
 	{
-		poolEvents(window);
 		scene.update();
 		scene.draw(window);
+		inputProvider.poolEvents(window);
 	}
-
 	scene.clear();
-
 	return 0;
-}
-
-void poolEvents(RenderWindow& window) {
-	Event event;
-	while (window.pollEvent(event))
-	{
-		if (event.type == Event::Closed)
-			window.close();
-	}
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <SFML/System.hpp>
 #include "Actor.h"
 
 using std::vector;
@@ -7,29 +8,18 @@ using namespace sf;
 
 class Scene {
 public:
+	void add(Actor*);
+	void draw(RenderWindow&);
+	void update();
+	void clear();
+	vector<Actor*> getActors() const;
+protected:
 	vector<Actor*> actors;
-	
-	void add(Actor* item) {
-		actors.push_back(item);
-	}
-
-	void draw(RenderWindow &window) {
-		window.clear();
-		for (auto actor : actors) {
-			actor->draw(window);
-		}
-		window.display();
-	}
-
-	void update() {
-		for (auto actor : actors) {
-			actor->update();
-		}
-	}
-
-	void clear() {
-		for (auto item : actors)
-			delete(item);
-		actors.clear();
-	}
+	Clock clock;
+	//Сколько времени прошло с предыдущего update() в милисикундах
+	float deltaTime = 0;
+	//Текущее время в милисикундах
+	float currentTime = 0;
 };
+
+
