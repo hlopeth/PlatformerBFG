@@ -1,11 +1,11 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "KeyListner.h"
-#include "Actor.h"
+#include "PhysicsActor.h"
 
 using namespace sf;
 
-class Player : public Actor, public KeyListner
+class Player : public PhysicsActor, public KeyListner
 {
 public:
 	Player();
@@ -15,8 +15,9 @@ public:
 	~Player();
 private:
 	RectangleShape rect;
-	Vector2f moveDir;
-	float speed = 0.2;
 	Vector2u screenSize;
+	bool inAir = true;
+	bool onWallLeft = false;
+	bool onWallRight = false;
 };
 

@@ -1,27 +1,32 @@
 #include "Player.h"
+#include <iostream>
 
-Player::Player()
-{
+Player::Player() {
 	rect.setFillColor(Color::Red);
 	rect.setSize(Vector2f(20, 40));
 	rect.setPosition(Vector2f(0, 0));
 }
 
 void Player::update(float time, float deltaTime) {
-	rect.move(moveDir * deltaTime * speed);
+	Vector2f delta = updatePhysics(deltaTime);
+	rect.move(delta);
 
 	if (rect.getPosition().x < 0) {
 		rect.move(Vector2f(-rect.getPosition().x, 0));
+		onWallLeft = true;
 	}
 	if (rect.getPosition().x + rect.getSize().x > screenSize.x) {
 		rect.move(Vector2f(screenSize.x - rect.getPosition().x - rect.getSize().x, 0));
+		onWallRight = true;
 	}
 	if (rect.getPosition().y < 0) {
 		rect.move(Vector2f(0, -rect.getPosition().y));
 	}
 	if (rect.getPosition().y + rect.getSize().y > screenSize.y) {
 		rect.move(Vector2f(0, screenSize.y - rect.getPosition().y - rect.getSize().y));
+		inAir = false;
 	}
+
 }
 
 void Player::draw(RenderWindow& window) {
@@ -34,32 +39,50 @@ void Player::keyEvent(Event event) {
 	if (event.type == Event::KeyPressed) {
 		switch (key)
 		{
-		case Keyboard::W:
-			moveDir.y = -1;
-			break;
-		case Keyboard::S:
-			moveDir.y = 1;
-			break;
 		case Keyboard::A:
-			moveDir.x = -1;
+			if (onWallRight) {
+				speed.y = -5;
+				speed.x = -8;
+				onWallRight = false;
+			} else if (inAir) {
+				speed.x = -2;
+			} else {
+				speed.x = -5;
+			}			
 			break;
 		case Keyboard::D:
-			moveDir.x = 1;
+			if (onWallLeft) {
+				speed.y = -5;
+				speed.x = 8;
+				onWallLeft = false;
+			}
+			else if (inAir) {
+				speed.x = 2;
+			}
+			else {
+				speed.x = 5;
+			}
+			break;
+		case Keyboard::Space:
+			if (!inAir) {
+				speed.y = -5;
+				inAir = true;
+			}
+			break;
+		case Keyboard::S:
 			break;
 		default:
 			break;
 		}
 	}
 	if (event.type == Event::KeyReleased) {
-		if (key == Keyboard::W || key == Keyboard::S) {
-			moveDir.y = 0;
+		if (key == Keyboard::W) {
 		}
 		if (key == Keyboard::D || key == Keyboard::A) {
-			moveDir.x = 0;
+			speed.x = 0;
 		}
 	}
 }
 
-Player::~Player()
-{
+Player::~Player() {
 }

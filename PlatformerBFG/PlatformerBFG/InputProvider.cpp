@@ -16,7 +16,7 @@ void InputProvider::unregisterListner(KeyListner* keyListner) {
 
 void InputProvider::poolEvents(RenderWindow& window) {
 	while (window.pollEvent(event))
-	{
+	{ 
 		switch (event.type)
 		{
 		case Event::Closed:

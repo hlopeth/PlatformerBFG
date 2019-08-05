@@ -4,6 +4,7 @@
 #include "Actor.h"
 #include "InputProvider.h"
 #include "Player.h"
+#include "PhysicsActor.h"
 
 using namespace std;
 using namespace sf;
@@ -13,38 +14,34 @@ const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 600;
 
 
-class Circle : public Actor, public CircleShape {
+class Circle : public PhysicsActor, public CircleShape {
 public:
 	Circle(int r) : CircleShape(r) {
+		speed.x = 5;
 	}
 	void update(float time, float deltaTime) override {
-		move(moveDir * speed * deltaTime);
+		move(updatePhysics(deltaTime));
 		
 		if (getPosition().x < 0) {
 			move(Vector2f(-getPosition().x, 0));
-			moveDir.x *= -1;
+			speed.x *= -1;
 		}
 		if (getPosition().x + getRadius() * 2 > SCREEN_WIDTH) {
 			move(Vector2f(SCREEN_WIDTH - getPosition().x - getRadius() * 2, 0));
-			moveDir.x *= -1;
+			speed.x *= -1;
 		}
 		if (getPosition().y < 0) {
 			move(Vector2f(0, -getPosition().y));
-			moveDir.y *= -1;
 		}
 		if (getPosition().y + getRadius() * 2 > SCREEN_HEIGHT) {
-			float delta = (getPosition().y + getRadius() * 2) - SCREEN_HEIGHT;
 			move(Vector2f(0, SCREEN_HEIGHT - getPosition().y - getRadius() * 2));
-			moveDir.y *= -1;
+			speed.y *= -1;
 		}
 	}
 	
 	virtual void draw(RenderWindow& window) {
 		window.draw(*this);
 	}
-private:
-	Vector2f moveDir = Vector2f(1, 1);
-	float speed = 1;
 };
 
 int main()
