@@ -8,6 +8,12 @@ void Scene::add(Actor* actor) {
 	actors.push_back(actor);
 }
 
+void Scene::add(vector<Actor*> actors) {
+	for (Actor* actor : actors) {
+		add(actor);
+	}
+}
+
 void Scene::draw(RenderWindow &window) {
 	window.clear();
 	for (auto actor : actors) {

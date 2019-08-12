@@ -1,10 +1,17 @@
 #include "Player.h"
 #include <iostream>
+using namespace std;
 
 Player::Player() {
 	rect.setFillColor(Color::Red);
-	rect.setSize(Vector2f(20, 40));
+	rect.setSize(Vector2f(25, 50));
 	rect.setPosition(Vector2f(0, 0));
+	std::cout << rect.getPosition().x << std::endl;
+}
+
+Player::Player(Vector2f position) : Player() {
+	rect.setPosition(position);
+	std::cout << rect.getPosition().x << std::endl;
 }
 
 void Player::update(float time, float deltaTime) {
@@ -15,18 +22,20 @@ void Player::update(float time, float deltaTime) {
 		rect.move(Vector2f(-rect.getPosition().x, 0));
 		onWallLeft = true;
 	}
+
 	if (rect.getPosition().x + rect.getSize().x > screenSize.x) {
 		rect.move(Vector2f(screenSize.x - rect.getPosition().x - rect.getSize().x, 0));
 		onWallRight = true;
 	}
+
 	if (rect.getPosition().y < 0) {
 		rect.move(Vector2f(0, -rect.getPosition().y));
 	}
+
 	if (rect.getPosition().y + rect.getSize().y > screenSize.y) {
 		rect.move(Vector2f(0, screenSize.y - rect.getPosition().y - rect.getSize().y));
 		inAir = false;
 	}
-
 }
 
 void Player::draw(RenderWindow& window) {

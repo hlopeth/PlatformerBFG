@@ -5,6 +5,7 @@
 #include "InputProvider.h"
 #include "Player.h"
 #include "PhysicsActor.h"
+#include "Map.h"
 
 using namespace std;
 using namespace sf;
@@ -55,9 +56,14 @@ int main()
 	shape->setPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 	scene.add(shape);
 
-	Player player;
+	scene.add(defaultMap.getActors());
+
+	Player player(Vector2f(50, 50));
 	scene.add(&player);
 	inputProvider.registerListner(&player);
+
+	//initial draw
+	scene.draw(window);
 
 	while (window.isOpen())
 	{

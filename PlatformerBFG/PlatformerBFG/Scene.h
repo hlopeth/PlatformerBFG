@@ -9,6 +9,7 @@ using namespace sf;
 class Scene {
 public:
 	void add(Actor*);
+	void add(vector<Actor*>);
 	void draw(RenderWindow&);
 	void update();
 	void clear();

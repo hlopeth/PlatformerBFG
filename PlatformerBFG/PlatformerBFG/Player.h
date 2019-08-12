@@ -9,6 +9,7 @@ class Player : public PhysicsActor, public KeyListner
 {
 public:
 	Player();
+	Player(Vector2f position);
 	void update(float time, float deltaTime) override;
 	void draw(RenderWindow& window) override;
 	void keyEvent(Event event) override;
