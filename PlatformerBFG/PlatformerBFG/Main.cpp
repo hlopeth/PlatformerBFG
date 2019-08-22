@@ -21,7 +21,11 @@ public:
 		speed.x = 5;
 	}
 	void update(float time, float deltaTime) override {
-		move(updatePhysics(deltaTime));
+		PhysicsActor::update(time, deltaTime);
+
+		float timeInSeconds = deltaTime * 0.001;
+		Vector2f delta = speed * (timeInSeconds * PIXEL_IN_METER);
+		move(delta);
 		
 		if (getPosition().x < 0) {
 			move(Vector2f(-getPosition().x, 0));
@@ -39,7 +43,7 @@ public:
 			speed.y *= -1;
 		}
 	}
-	
+
 	virtual void draw(RenderWindow& window) {
 		window.draw(*this);
 	}
@@ -52,7 +56,7 @@ int main()
 	InputProvider inputProvider;
 
 	Circle *shape = new Circle(10);
-	shape->setFillColor(Color::Green);
+	shape->setFillColor(Color::Yellow);
 	shape->setPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 	scene.add(shape);
 

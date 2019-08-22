@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Actor.h"
+#include "CollisionActor.h"
 
 using namespace sf;
 
@@ -19,13 +19,12 @@ protected:
 	float mass = 0;
 
 	//обновляет скорость, возвращает как нужно передвинуть актора в пикселях
-	Vector2f updatePhysics(float deltaTime) {
+	void update(float time, float deltaTime) {
 		float timeInSeconds = deltaTime * 0.001;
 		Vector2f accselerationSum = accseleration;
 		if (usesGravity)
 			accselerationSum += gravityAccseleration;
 
 		speed += accselerationSum * timeInSeconds;
-		return speed * (timeInSeconds * PIXEL_IN_METER);
 	}
 };

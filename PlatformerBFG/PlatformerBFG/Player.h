@@ -5,13 +5,15 @@
 
 using namespace sf;
 
-class Player : public PhysicsActor, public KeyListner
+class Player : public PhysicsActor, public KeyListner, public Collidable
 {
 public:
 	Player();
 	Player(Vector2f position);
 	void update(float time, float deltaTime) override;
 	void draw(RenderWindow& window) override;
+	RectangleShape getCollisionBox() override;
+	void onCollide(RectangleShape collisionBox) override;
 	void keyEvent(Event event) override;
 	~Player();
 private:

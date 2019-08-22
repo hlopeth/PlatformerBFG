@@ -16,6 +16,14 @@ void Tile::draw(RenderWindow& window) {
 	window.draw(rect);
 }
 
+RectangleShape Tile::getCollisionBox() {
+	return rect;
+}
+
+void Tile::onCollide(RectangleShape collisionBox) {
+
+}
+
 void Tile::setPosition(Vector2f& position) {
 	rect.setPosition(position);
 }

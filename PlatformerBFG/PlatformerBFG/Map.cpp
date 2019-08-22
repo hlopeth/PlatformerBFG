@@ -23,15 +23,15 @@ Map Map::loadMapFromFile(string filename) {
 	return Map();
 }
 
-const int height = 20;
-const int width = 20;
+const int height = 23;
+const int width = 31;
 Map defaultMap(
 	{
-		Tile(Vector2f(0, 0)),
-		Tile(Vector2f(25, 0), Vector2f(25 * width, 25)),
+		Tile(Vector2f(0, 0), Vector2f(25 * width, 25)),
 		Tile(Vector2f(0, 25), Vector2f(25, height * 25)),
-		Tile(Vector2f(25 * (width + 1), 0)),
-		Tile(Vector2f(0, 25 * (height + 1)))
+		Tile(Vector2f(25 * width, 0), Vector2f(25, 25 * height)),
+		Tile(Vector2f(25, 25 * height), Vector2f(25 * width, 25)),
+		Tile(Vector2f(25, 25 * 7),Vector2f( 25 * 10, 25))
 	}
 );
 
