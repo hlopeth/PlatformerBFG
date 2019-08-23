@@ -35,7 +35,7 @@ RectangleShape Player::getCollisionBox() {
 void Player::onCollide(RectangleShape collisionBox) {
 	Vector2f collideMove = Collidable::getCollideMove(getCollisionBox(), collisionBox);
 	if (collideMove.y < 0) {
-		accseleration.y = 0;
+		speed.y = 0;
 		inAir = false;
 	}
 	if (collideMove.x > 0) {

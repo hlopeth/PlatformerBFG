@@ -36,6 +36,9 @@
     <ClCompile Include="CollisionActor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MapGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -66,6 +69,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CollisionActor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MapGenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameConstans.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Updatable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

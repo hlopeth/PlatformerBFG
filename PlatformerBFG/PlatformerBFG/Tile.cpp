@@ -28,6 +28,10 @@ void Tile::setPosition(Vector2f& position) {
 	rect.setPosition(position);
 }
 
+void Tile::move(Vector2f offset) {
+	rect.move(offset);
+}
+
 Vector2f Tile::getBottomLeft() {
 	return Vector2f(rect.getPosition().x, rect.getPosition().y + rect.getSize().y);
 }

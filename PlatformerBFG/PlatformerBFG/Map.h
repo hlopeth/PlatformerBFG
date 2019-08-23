@@ -9,11 +9,12 @@ using std::string;
 class Map {
 public:
 	Map();
-	Map(const vector<Tile> tiles);
+	Map(const vector<Tile*> tiles);
 	vector<Actor*> getActors();
 	static Map loadMapFromFile(string filename);
-private:
-	vector<Tile> _tiles;
+	~Map();
+protected:
+	vector<Tile*> tiles;
 };
 
 

@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "PhysicsActor.h"
 #include "Map.h"
+#include "MapGenerator.h"
 
 using namespace std;
 using namespace sf;
@@ -51,6 +52,7 @@ public:
 
 int main()
 {
+	srand(time(NULL));
 	RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "SFML works!");
 	Scene scene;
 	InputProvider inputProvider;
@@ -58,12 +60,13 @@ int main()
 	Circle *shape = new Circle(10);
 	shape->setFillColor(Color::Yellow);
 	shape->setPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
-	scene.add(shape);
+	scene.addActor(shape);
 
-	scene.add(defaultMap.getActors());
+	MapGenerator* mapGenerator = new MapGenerator(100, 600, 600-TILE_SIZE, Vector2f(-100, 0), &scene);
+	scene.addUpdatable(mapGenerator);
 
-	Player player(Vector2f(50, 50));
-	scene.add(&player);
+	Player player(Vector2f(200, 50));
+	scene.addActor(&player);
 	inputProvider.registerListner(&player);
 
 	//initial draw
