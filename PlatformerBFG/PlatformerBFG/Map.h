@@ -1,17 +1,19 @@
 #pragma once
 #include <vector>
+#include <string>
+#include <fstream>
 #include "Tile.h"
-#include "string"
 
 using std::vector;
 using std::string;
+using std::ifstream;
 
 class Map {
 public:
 	Map();
 	Map(const vector<Tile*> tiles);
 	vector<Actor*> getActors();
-	static Map loadMapFromFile(string filename);
+	static bool loadMapFromFile(string filename, Map* &result);
 	~Map();
 protected:
 	vector<Tile*> tiles;

@@ -6,7 +6,7 @@
 class Tile : public Collidable, public Actor {
 public:
 	Tile();
-	Tile(Vector2f position, Vector2f size = Vector2f(TILE_SIZE, TILE_SIZE));
+	Tile(Vector2f position, Vector2f size = Vector2f(1, 1));
 	void update(float time, float deltaTime) override;
 	void draw(RenderWindow& window) override;
 	RectangleShape getCollisionBox() override;

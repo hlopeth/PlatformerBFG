@@ -62,8 +62,14 @@ int main()
 	shape->setPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 	scene.addActor(shape);
 
-	MapGenerator* mapGenerator = new MapGenerator(100, 600, 600-TILE_SIZE, Vector2f(-100, 0), &scene);
-	scene.addUpdatable(mapGenerator);
+	Map* testMap = nullptr;
+	if (Map::loadMapFromFile("Maps/testMap.map", testMap)) {
+		scene.addActors(testMap->getActors());
+	}
+	else {
+		cout << "failed to load map" << endl;
+	}
+	scene.addActors(defaultMap.getActors());
 
 	Player player(Vector2f(200, 50));
 	scene.addActor(&player);

@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "KeyListner.h"
 #include "PhysicsActor.h"
+#include "GameConstans.h"
 
 using namespace sf;
 
@@ -20,7 +21,5 @@ private:
 	RectangleShape rect;
 	Vector2u screenSize;
 	bool inAir = true;
-	bool onWallLeft = false;
-	bool onWallRight = false;
 };
 

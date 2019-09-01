@@ -5,6 +5,10 @@ Tile::Tile() {
 }
 
 Tile::Tile(Vector2f position, Vector2f size): Tile() {
+	position.x *= TILE_SIZE;
+	position.y *= TILE_SIZE;
+	size.x *= TILE_SIZE;
+	size.y *= TILE_SIZE;
 	rect.setPosition(position);
 	rect.setSize(size);
 }

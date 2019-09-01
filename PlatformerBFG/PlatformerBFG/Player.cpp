@@ -4,7 +4,7 @@ using namespace std;
 
 Player::Player() {
 	rect.setFillColor(Color::Red);
-	rect.setSize(Vector2f(25, 50));
+	rect.setSize(Vector2f(TILE_SIZE, 2 * TILE_SIZE));
 	rect.setPosition(Vector2f(0, 0));
 }
 
@@ -18,14 +18,12 @@ void Player::update(float time, float deltaTime) {
 	float timeInSeconds = deltaTime * 0.001;
 	Vector2f delta = speed * (timeInSeconds * PIXEL_IN_METER);
 	rect.move(delta);
+	inAir = true;
 }
 
 void Player::draw(RenderWindow& window) {
 	window.draw(rect);
 	screenSize = window.getSize();
-	inAir = true;
-	onWallLeft = false;
-	onWallRight = false;
 }
 
 RectangleShape Player::getCollisionBox() {
@@ -38,12 +36,6 @@ void Player::onCollide(RectangleShape collisionBox) {
 		speed.y = 0;
 		inAir = false;
 	}
-	if (collideMove.x > 0) {
-		onWallLeft = true;
-	}
-	if (collideMove.x < 0) {
-		onWallRight = true;
-	}
 	rect.move(collideMove);
 }
 
@@ -53,31 +45,13 @@ void Player::keyEvent(Event event) {
 		switch (key)
 		{
 		case Keyboard::A:
-			if (onWallRight) {
-				speed.y = -5;
-				speed.x = -8;
-				onWallRight = false;
-			} else if (inAir) {
-				speed.x = -2;
-			} else {
-				speed.x = -5;
-			}			
+			speed.x = -5;
 			break;
 		case Keyboard::D:
-			if (onWallLeft) {
-				speed.y = -5;
-				speed.x = 8;
-				onWallLeft = false;
-			}
-			else if (inAir) {
-				speed.x = 2;
-			}
-			else {
-				speed.x = 5;
-			}
+			speed.x = 5;
 			break;
 		case Keyboard::Space:
-			if (!inAir || true) {
+			if (!inAir) {
 				speed.y = -5;
 				inAir = true;
 			}
