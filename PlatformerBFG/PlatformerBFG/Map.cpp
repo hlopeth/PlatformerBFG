@@ -19,7 +19,7 @@ vector<Actor*> Map::getActors() {
 	return actors;
 }
 
-bool Map::loadMapFromFile(string filename, Map* &result) {
+bool Map::loadMapFromFile(string filename, Map* &result, float tileCoordY) {
 	ifstream in(filename);
 	if (!in.is_open()) {
 		return false;
@@ -31,11 +31,11 @@ bool Map::loadMapFromFile(string filename, Map* &result) {
 	while (!in.eof())
 	{
 		in.getline(line, 100);
-		int tileCoordY = 0;
+		int tileCoordX = 0;
 
 		for (int i = 0; i < maxLineSize; i++) {
 			if (line[i] >= '0' && line[i] <= '9') {
-				tileCoordY = tileCoordY * 10 + line[i] - '0';
+				tileCoordX = tileCoordX * 10 + line[i] - '0';
 			}
 			else {
 				//коментарий
@@ -44,7 +44,7 @@ bool Map::loadMapFromFile(string filename, Map* &result) {
 				}
 				else if (line[i] == '\0') {
 					if (i > 0) {
-						result->tiles.push_back(new Tile(Vector2f(tileCoordY, 5)));
+						result->tiles.push_back(new Tile(Vector2f(tileCoordX, tileCoordY)));
 						break;
 					}
 					else {

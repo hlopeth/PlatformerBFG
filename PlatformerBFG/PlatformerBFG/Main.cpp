@@ -7,14 +7,10 @@
 #include "PhysicsActor.h"
 #include "Map.h"
 #include "MapGenerator.h"
+#include "TestLevel.h"
 
 using namespace std;
 using namespace sf;
-
-//constants
-const int SCREEN_WIDTH = 800;
-const int SCREEN_HEIGHT = 600;
-
 
 class Circle : public PhysicsActor, public CircleShape {
 public:
@@ -62,14 +58,7 @@ int main()
 	shape->setPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 	scene.addActor(shape);
 
-	Map* testMap = nullptr;
-	if (Map::loadMapFromFile("Maps/testMap.map", testMap)) {
-		scene.addActors(testMap->getActors());
-	}
-	else {
-		cout << "failed to load map" << endl;
-	}
-	scene.addActors(defaultMap.getActors());
+	TestLevel testLevel(&scene);
 
 	Player player(Vector2f(200, 50));
 	scene.addActor(&player);

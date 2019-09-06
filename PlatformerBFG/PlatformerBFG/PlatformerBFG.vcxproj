@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClCompile Include="CollisionActor.cpp" />
     <ClCompile Include="InputProvider.cpp" />
+    <ClCompile Include="TestLevel.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MapGenerator.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -146,6 +147,7 @@
     <ClInclude Include="GameConstans.h" />
     <ClInclude Include="InputProvider.h" />
     <ClInclude Include="KeyListner.h" />
+    <ClInclude Include="TestLevel.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapGenerator.h" />
     <ClInclude Include="PhysicsActor.h" />
