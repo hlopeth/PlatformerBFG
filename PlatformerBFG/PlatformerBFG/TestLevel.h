@@ -15,7 +15,7 @@ public:
 private:
 	Map* movingPart = nullptr;
 	Tile* floor = nullptr;
-	const string pathToMap = "Maps/testMap.map";
+	const string pathToMap = "Maps/MapExtension.json";
 	//скорость движения по уровню, измеряется в тайлах в секунду
 	Vector2f movingDir = Vector2f(-2 * TILE_SIZE, 0);
 };

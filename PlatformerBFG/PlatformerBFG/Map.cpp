@@ -19,46 +19,21 @@ vector<Actor*> Map::getActors() {
 	return actors;
 }
 
-bool Map::loadMapFromFile(string filename, Map* &result, float tileCoordY) {
-	ifstream in(filename);
-	if (!in.is_open()) {
+bool Map::loadMapFromFile(string filename, Map* &result) {
+	ifstream input(filename);
+	if (!input.is_open()) {
 		return false;
 	}
-
-	result = new Map();
-	const int maxLineSize = 100;
-	char line[maxLineSize];
-	while (!in.eof())
-	{
-		in.getline(line, 100);
-		int tileCoordX = 0;
-
-		for (int i = 0; i < maxLineSize; i++) {
-			if (line[i] >= '0' && line[i] <= '9') {
-				tileCoordX = tileCoordX * 10 + line[i] - '0';
-			}
-			else {
-				//коментарий
-				if (line[i] == '#') {
-					break;
-				}
-				else if (line[i] == '\0') {
-					if (i > 0) {
-						result->tiles.push_back(new Tile(Vector2f(tileCoordX, tileCoordY)));
-						break;
-					}
-					else {
-						break;
-					}
-				}
-				else {
-					delete result;
-					return false;
-				}
-			}
-		}
+	json j;
+	vector<Tile*> tiles;
+	input >> j;
+	for (auto& element : j["array"]) {
+		auto jsonTile = element["Tile"];
+		Vector2f position(jsonTile["Position"]["X"], jsonTile["Position"]["Y"]);
+		Vector2f scale(jsonTile["Scale"]["Width"], jsonTile["Scale"]["Height"]);
+		tiles.push_back(new Tile(position, scale));
 	}
-
+	result = new Map(tiles);
 	return true;
 }
 

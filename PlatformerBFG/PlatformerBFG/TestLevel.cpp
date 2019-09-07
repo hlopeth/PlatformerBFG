@@ -1,7 +1,7 @@
 #include "TestLevel.h"
 
 TestLevel::TestLevel(Scene* scene) {
-	if (Map::loadMapFromFile(pathToMap, movingPart, SCREEN_HEIGHT / TILE_SIZE - 2)) {
+	if (Map::loadMapFromFile(pathToMap, movingPart)) {
 		scene->addActors(movingPart->getActors());
 
 		Vector2f floorPos = Vector2f(0, SCREEN_HEIGHT/TILE_SIZE - 1);
