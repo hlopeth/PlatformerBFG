@@ -16,7 +16,7 @@ protected:
 	//ускорение в м/с^2
 	Vector2f accseleration = Vector2f(0,0);
 	//масса в кг
-	float mass = 0;
+	float mass = 1;
 
 	//обновляет скорость, возвращает как нужно передвинуть актора в пикселях
 	void update(float time, float deltaTime) {
@@ -25,6 +25,6 @@ protected:
 		if (usesGravity)
 			accselerationSum += gravityAccseleration;
 
-		speed += accselerationSum * timeInSeconds;
+		speed += accselerationSum * mass * timeInSeconds;
 	}
 };

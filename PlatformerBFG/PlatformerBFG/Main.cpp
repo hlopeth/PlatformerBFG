@@ -60,15 +60,14 @@ int main()
 
 	TestLevel testLevel(&scene);
 
-	Player player(Vector2f(200, 50));
+	Player player(Vector2f(TILE_SIZE, 19 * TILE_SIZE));
 	scene.addActor(&player);
 	inputProvider.registerListner(&player);
 
 	//initial draw
 	scene.draw(window);
 
-	while (window.isOpen())
-	{
+	while (window.isOpen()) {
 		scene.update();
 		scene.draw(window);
 		inputProvider.poolEvents(window);

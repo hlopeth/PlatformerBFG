@@ -1,0 +1,232 @@
+{
+  "array": [
+    {
+      "Tile": {
+        "Position": {
+          "X": 10,
+          "Y": 22
+        },
+        "Scale": {
+          "Width": 1,
+          "Height": 1
+        }
+      }
+    },
+    {
+      "Tile": {
+        "Position": {
+          "X": 20,
+          "Y": 22
+        },
+        "Scale": {
+          "Width": 1,
+          "Height": 1
+        }
+      }
+    },
+    {
+      "Tile": {
+        "Position": {
+          "X": 30,
+          "Y": 21
+        },
+        "Scale": {
+          "Width": 1,
+          "Height": 2
+        }
+      }
+    },
+    {
+      "Tile": {
+        "Comment": "Низкая рампа",
+        "Position": {
+          "X": 39,
+          "Y": 21
+        },
+        "Scale": {
+          "Width": 6,
+          "Height": 1
+        }
+      }
+    },
+    {
+      "Tile": {
+        "Comment": "Левая ножка рампы",
+        "Position": {
+          "X": 40,
+          "Y": 22
+        },
+        "Scale": {
+          "Width": 1,
+          "Height": 1
+        }
+      }
+    },
+    {
+      "Tile": {
+        "Comment": "Правая ножка рампы",
+        "Position": {
+          "X": 43,
+          "Y": 22
+        },
+        "Scale": {
+          "Width": 1,
+          "Height": 1
+        }
+      }
+    },
+    {
+      "Tile": {
+        "Comment": "Высокая рампа",
+        "Position": {
+          "X": 47,
+          "Y": 19
+        },
+        "Scale": {
+          "Width": 6,
+          "Height": 1
+        }
+      }
+    },
+    {
+      "Tile": {
+        "Comment": "Левая ножка рампы",
+        "Position": {
+          "X": 48,
+          "Y": 20
+        },
+        "Scale": {
+          "Width": 1,
+          "Height": 3
+        }
+      }
+    },
+    {
+      "Tile": {
+        "Comment": "Правая ножка рампы",
+        "Position": {
+          "X": 51,
+          "Y": 20
+        },
+        "Scale": {
+          "Width": 1,
+          "Height": 3
+        }
+      }
+    },
+    {
+      "Tile": {
+        "Comment": "Труба низ",
+        "Position": {
+          "X": 54,
+          "Y": 17
+        },
+        "Scale": {
+          "Width": 6,
+          "Height": 0.5
+        }
+      }
+    },
+    {
+      "Tile": {
+        "Comment": "Труба верх",
+        "Position": {
+          "X": 54,
+          "Y": 12
+        },
+        "Scale": {
+          "Width": 6,
+          "Height": 0.5
+        }
+      }
+    },
+    {
+      "Tile": {
+        "Comment": "Рампа после трубы",
+        "Position": {
+          "X": 64,
+          "Y": 17
+        },
+        "Scale": {
+          "Width": 6,
+          "Height": 1
+        }
+      }
+    },
+    {
+      "Tile": {
+        "Comment": "Левая ножка рампы",
+        "Position": {
+          "X": 65,
+          "Y": 18
+        },
+        "Scale": {
+          "Width": 1,
+          "Height": 5
+        }
+      }
+    },
+    {
+      "Tile": {
+        "Comment": "Правая ножка рампы",
+        "Position": {
+          "X": 68,
+          "Y": 18
+        },
+        "Scale": {
+          "Width": 1,
+          "Height": 5
+        }
+      }
+    },
+    {
+      "Tile": {
+        "Comment": "Узкая рампа после трубы",
+        "Position": {
+          "X": 74,
+          "Y": 16
+        },
+        "Scale": {
+          "Width": 4,
+          "Height": 7
+        }
+      }
+    },
+    {
+      "Tile": {
+        "Position": {
+          "X": 80,
+          "Y": 15
+        },
+        "Scale": {
+          "Width": 1,
+          "Height": 2
+        }
+      }
+    },
+    {
+      "Tile": {
+        "Position": {
+          "X": 86,
+          "Y": 16
+        },
+        "Scale": {
+          "Width": 1,
+          "Height": 2
+        }
+      }
+    },
+    {
+      "Tile": {
+        "Position": {
+          "X": 92,
+          "Y": 15
+        },
+        "Scale": {
+          "Width": 1,
+          "Height": 2
+        }
+      }
+    }
+  ]
+}

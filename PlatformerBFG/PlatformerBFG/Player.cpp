@@ -6,6 +6,7 @@ Player::Player() {
 	rect.setFillColor(Color::Red);
 	rect.setSize(Vector2f(TILE_SIZE, 2 * TILE_SIZE));
 	rect.setPosition(Vector2f(0, 0));
+	mass = 0.8;
 }
 
 Player::Player(Vector2f position) : Player() {
@@ -52,7 +53,7 @@ void Player::keyEvent(Event event) {
 			break;
 		case Keyboard::Space:
 			if (!inAir) {
-				speed.y = -5;
+				speed.y = -3.8;
 				inAir = true;
 			}
 			break;
